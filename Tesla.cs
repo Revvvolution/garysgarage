@@ -1,25 +1,28 @@
 namespace Garage
 {
-    public class Tesla : Vehicle // Electric car
+    public class Tesla : IVehicle, IElectricVehicle // Electric car
     {
-        public double BatteryKWh { get; set; }
+        public string? MainColor { get; set; } = "pearl-white";
+        public int MaximumOccupancy { get; set; } = 5;
+        public double BatteryKWh { get; set; } = 100;
+        public int CurrentChargePercentage { get; set; } = 65;
 
         public void ChargeBattery()
         {
-            // method definition omitted
+            CurrentChargePercentage = 100;
         }
 
-        public override void Drive()
+        public void Drive()
         {
             Console.WriteLine($"The {MainColor} Tesla goes Brrrrrr!");
         }
 
-        public override void Turn(string direction)
+        public void Turn()
         {
-            Console.WriteLine($"The Tesla turns {direction} into oncoming traffic.  #AutoPilot");
+            Console.WriteLine($"The Tesla turns right into oncoming traffic. By right, I mean 'directly'.  #AutoPilot");
         }
 
-        public override void Stop()
+        public void Stop()
         {
             Console.WriteLine("The Tesla stops after driving over a wrecked Zero motorcycle.");
         }

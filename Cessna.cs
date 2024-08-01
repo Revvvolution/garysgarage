@@ -1,25 +1,28 @@
 namespace Garage
 {
-    public class Cessna : Vehicle  // Propellor light aircraft
+    public class Cessna : IVehicle, IGasVehicle  // Propellor light aircraft
     {
-        public double FuelCapacity { get; set; }
+        public string? MainColor { get; set; } = "vestal-white";
+        public int MaximumOccupancy { get; set; } = 4;
+        public double FuelCapacity { get; set; } = 56;
+        public int CurrentTankPercentage { get; set; } = 2;
 
         public void RefuelTank()
         {
-            // method definition omitted
+            CurrentTankPercentage = 100;
         }
 
-        public override void Drive()
+        public void Drive()
         {
             Console.WriteLine($"The {MainColor} Cessna goes Wah wah wah wah wah!");
         }
 
-        public override void Turn(string direction)
+        public void Turn()
         {
-            Console.WriteLine($"The Cessna banks {direction}");
+            Console.WriteLine($"The Cessna banks left to 'DO A BARREL ROLL!'");
         }
 
-        public override void Stop()
+        public void Stop()
         {
             Console.WriteLine("The bank robbers in the Cessna roll to a stop on the runway of a non-extradition country.");
         }

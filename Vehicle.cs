@@ -1,23 +1,45 @@
 namespace Garage
 {
-    public class Vehicle
+    public interface IVehicle
     {
-        public string MainColor { get; set; }
-        public int MaximumOccupancy { get; set; }
+        string? MainColor { get; set; }
+        int MaximumOccupancy { get; set; }
+        void Drive();
+        void Turn();
+        void Stop();
+    }
 
-        public virtual void Drive()
-        {
-            Console.WriteLine("Vrooom!");
-        }
+    public interface IElectricVehicle
+    {
+        double BatteryKWh { get; set; }
+        int CurrentChargePercentage { get; set; }
+        void ChargeBattery();
+    }
 
-        public virtual void Turn(string direction)
-        {
-            Console.WriteLine($"I turn {direction}");
-        }
+    public interface IGasVehicle
+    {
+        double FuelCapacity { get; set; }
+        int CurrentTankPercentage { get; set; }
 
-        public virtual void Stop()
-        {
-            Console.WriteLine("The vehicle slows to a stop!");
-        }
+        void RefuelTank();
     }
 }
+        /* 
+            public string? MainColor { get; set; }
+            public int MaximumOccupancy { get; set; }
+
+            public virtual void Drive()
+            {
+                Console.WriteLine("Vrooom!");
+            }
+
+            public virtual void Turn(string direction)
+            {
+                Console.WriteLine($"I turn {direction}");
+            }
+
+            public virtual void Stop()
+            {
+                Console.WriteLine("The vehicle slows to a stop!");
+            } 
+        */

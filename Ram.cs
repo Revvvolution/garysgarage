@@ -1,25 +1,28 @@
 namespace Garage
 {
-    public class Ram : Vehicle  // Gas powered truck
+    public class Ram : IVehicle, IGasVehicle  // Gas powered truck
     {
-        public double FuelCapacity { get; set; }
+        public string? MainColor { get; set; } = "red";
+        public int MaximumOccupancy { get; set; } = 4;
+        public double FuelCapacity { get; set; } = 23;
+        public int CurrentTankPercentage { get; set; } = 17;
 
         public void RefuelTank()
         {
-            // method definition omitted
+            CurrentTankPercentage = 100;
         }
 
-        public override void Drive()
+        public void Drive()
         {
             Console.WriteLine($"The {MainColor} Ram goes Rumble rumble rumble!");
         }
 
-        public override void Turn(string direction)
+        public void Turn()
         {
-            Console.WriteLine($"The Ram turns {direction} and runs into the Zero motorcycle!");
+            Console.WriteLine($"The Ram turns and runs into the Zero motorcycle!");
         }
 
-        public override void Stop()
+        public void Stop()
         {
             Console.WriteLine("The Ram suddenly stops then speeds away to avoid prison.  #SixBeerLunch");
         }
